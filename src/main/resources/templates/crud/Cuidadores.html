@@ -60,7 +60,7 @@
 						<td><a class="btn btn-info"
 								th:href="@{/cuidadores/{id}(id=${cuidador.cuidadorId})}">Editar</a></td>
 						<td><a class="btn btn-danger"
-								th:href="@{/cuidadores/{id}(id=${cuidador.cuidadorId})}">Eliminar</a>
+								th:href="@{/cuidadores/{id}/eliminar(id=${cuidador.cuidadorId})}">Eliminar</a>
 						</td>
 					</tr>
 				</tbody>
@@ -70,6 +70,7 @@
 		<div>
 			<a href="/cuidadores/0" class="btn btn-primary">Agregar</a>
 		</div>
+		<br>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

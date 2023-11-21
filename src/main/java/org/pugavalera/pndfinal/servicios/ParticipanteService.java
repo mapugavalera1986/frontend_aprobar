@@ -41,7 +41,7 @@ public class ParticipanteService {
 	public Participante ver(int id){
 		Participante temporal = new Participante();
 		try {
-		ResponseEntity<Participante> respuesta = restTemplate.exchange(baseUri+"inscritos/"+id,
+			ResponseEntity<Participante> respuesta = restTemplate.exchange(baseUri+"inscritos/"+id,
 				HttpMethod.GET, null, new ParameterizedTypeReference<Participante>() {});
 			temporal = respuesta.getBody();
 			logger.info("Se encontró información del participante "+id);
@@ -51,8 +51,22 @@ public class ParticipanteService {
 		return temporal;
 	}
 	
+	public List<Participante> listarCuidador(int cuidadorId){
+		List<Participante> temporal = new LinkedList<Participante>();
+		try {
+			ResponseEntity<List<Participante>> respuesta = restTemplate.exchange(baseUri+"inscritos/apoderado/"+cuidadorId,
+				HttpMethod.GET, null, new ParameterizedTypeReference<List<Participante>>() {});
+			temporal = respuesta.getBody();
+			logger.info("Se encontraron a participantes a cargo del apoderado "+cuidadorId);
+		}catch(Exception e) {
+			logger.error("Error: " + e);
+		}
+		return temporal;
+	}
+	
 	public Participante crear(Participante procesado) {
 		ResponseEntity<Participante> respuesta = restTemplate.postForEntity(baseUri+"inscritos", procesado, Participante.class);
+		logger.info("Participante agregado con éxito");
 		return respuesta.getBody();
 	}
 }
