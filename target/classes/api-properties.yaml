@@ -1,0 +1,8 @@
+api:
+    superapi:
+        baseUri: "http://localhost:8081/api/"
+        apiKey: ""
+spring:
+  mvc:
+    format:
+      date: yyyy-MM-dd

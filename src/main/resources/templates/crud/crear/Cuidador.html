@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Crear :: Especialista</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container">
+		<br>
+		<h2 th:if="${cuidador.cuidadorId == 0}">Agregar apoderado</h2>
+		<h2 th:if="${cuidador.cuidadorId > 0}">Editar apoderado</h2>
+		<br>
+		<form action="#" th:action="@{/cuidadores/guardar}" th:object="${cuidador}" method="post">
+			<input type="hidden" th:field="*{cuidadorId}" name="cuidadorId" id="cuidadorId">
+			<div class="form-group">
+				<label for="nmbrs">Nombre</label> <input type="text" class="form-control" id="nmbrs" th:field="*{nmbrs}"
+					name="nmbrs">
+			</div>
+			<div class="form-group">
+				<label for="apllds">Apellido</label> <input type="text" class="form-control" id="apllds"
+					th:field="*{apllds}" name="apllds">
+			</div>
+			<div class="form-group">
+				<label for="dni">DNI</label> <input type="text" class="form-control" id="dni" th:field="*{dni}"
+					name="dni">
+			</div>
+			<div class="form-group">
+				<label for="correoE">Correo E.</label> <input type="text" class="form-control" id="correoE"
+					th:field="*{correoE}" name="correoE">
+			</div>
+			<div class="form-group">
+				<label for="telf">Celular</label> <input type="text" class="form-control" id="telf" th:field="*{telf}"
+					name="telf">
+			</div>
+			<br>
+			<button type="submit" class="btn btn-success mr-1">Guardar</button>
+			<a class="btn btn-warning" href="/cuidadores" role="button">Volver</a>
+		</form>
+	</div>
+</body>
+
+</html>
