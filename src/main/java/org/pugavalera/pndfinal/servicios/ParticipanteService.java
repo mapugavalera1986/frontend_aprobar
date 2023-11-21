@@ -69,4 +69,9 @@ public class ParticipanteService {
 		logger.info("Participante agregado con éxito");
 		return respuesta.getBody();
 	}
+	
+	public void eliminar(int id) {
+		restTemplate.delete(baseUri+"inscritos/"+id);
+		logger.info("Participante eliminado con éxito");
+	}
 }

@@ -46,4 +46,17 @@ public class EspecialistaController {
 		srvc_especialistas.crear(procesar);
 		return new ModelAndView("redirect:/especialistas");
 	}
+	
+	@GetMapping("{id}/eliminar")
+	public ModelAndView solicitarEliminar(@PathVariable("id") int id, ModelMap m) {
+		Especialista ver = srvc_especialistas.ver(id);
+		m.addAttribute("especialista", ver);
+		return new ModelAndView("crud/eliminar/Especialista", m);
+	}
+	
+	@PostMapping("/eliminar")
+	public ModelAndView eliminar(Especialista eliminar, ModelMap m) {
+		srvc_especialistas.eliminar(eliminar.getEspecialistaId());
+		return new ModelAndView("redirect:/especialistas", m);
+	}
 }

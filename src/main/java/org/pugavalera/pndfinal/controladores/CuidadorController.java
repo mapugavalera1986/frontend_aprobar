@@ -46,6 +46,12 @@ public class CuidadorController {
 		return new ModelAndView("crud/crear/Cuidador", m);
 	}
 	
+	@PostMapping("/guardar")
+	public ModelAndView crear(Cuidador procesar, ModelMap m) {
+		srvc_cuidadores.crear(procesar);
+		return new ModelAndView("redirect:/cuidadores", m);
+	}
+	
 	@GetMapping("{id}/eliminar")
 	public ModelAndView solicitarEliminar(@PathVariable("id") int id, ModelMap m) {
 		Cuidador ver = srvc_cuidadores.ver(id);
@@ -53,12 +59,6 @@ public class CuidadorController {
 		m.addAttribute("cuidador", ver);
 		m.addAttribute("participantes", listar);
 		return new ModelAndView("crud/eliminar/Cuidador", m);
-	}
-	
-	@PostMapping("/guardar")
-	public ModelAndView crear(Cuidador procesar, ModelMap m) {
-		srvc_cuidadores.crear(procesar);
-		return new ModelAndView("redirect:/cuidadores", m);
 	}
 	
 	@PostMapping("/eliminar")

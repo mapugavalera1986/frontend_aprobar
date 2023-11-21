@@ -1,9 +1,9 @@
-		<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
-	<title>Gestionar :: Terapeutas</title>
+	<title>ALERTA - Eliminar :: Especialista</title>
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -22,7 +22,7 @@
 						<a class="nav-link" href="/especialistas">Terapeutas</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/participantes">Inscritos</a>
+						<a class="nav-link" href="/especialistas">Inscritos</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="/cuidadores">Apoderados</a>
@@ -34,48 +34,19 @@
 			</div>
 		</nav>
 		<br>
-		<h2 th:if="${list.isEmpty()}">Se requiere registrar a nuestros especialistas</h2>
-		<div th:if="${!list.isEmpty()}">
-			<h2>Gestión de terapeutas</h2>
-			<br>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>Nombre</th>
-						<th>Apellido</th>
-						<th>DNI</th>
-						<th>RUC</th>
-						<th>Correo electrónico</th>
-						<th>Teléfono</th>
-						<th>Empezó</th>
-						<th>Activo</th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr th:each="especialista : ${list}">
-						<td th:text="${especialista.nmbrs}">
-						<td th:text="${especialista.apllds}">
-						<td th:text="${especialista.dni}">
-						<td th:text="${especialista.ruc}">
-						<td th:text="${especialista.correoE}">
-						<td th:text="${especialista.telf}">
-						<td th:text="${especialista.fechaIngreso}">
-						<td th:text="${especialista.activo}">
-						<td><a class="btn btn-info"
-								th:href="@{/especialistas/{id}(id=${especialista.especialistaId})}">Editar</a></td>
-						<td><a class="btn btn-danger"
-								th:href="@{/especialistas/{id}/eliminar(id=${especialista.especialistaId})}">Eliminar</a>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<h2>¡Alerta de eliminación</h2>
 		<br>
-		<div>
-			<a href="/especialistas/0" class="btn btn-primary">Agregar</a>
-		</div>
+		<form action="#" th:action="@{/especialistas/eliminar}" th:object="${especialista}" method="post">
+			<input type="hidden" th:field="*{especialistaId}" name="especialistaId" id="especialistaId">
+			<p>Cuidado con eliminar al presente especialista. No podrás revertir esta eliminación.</p>
+			<p>Recomendamos que, de ser posible, modifiques el particpante existente para evitar realizar más trabajo del
+				necesario. También puedes optar por crear un nuevo especialista y asignarlo antes de eliminar el
+				presente.</p>
+			<p>¿Deseas procede con la eliminación?</p>
+			<br>
+			<button type="submit" class="btn btn-danger mr-1">Eliminar</button>
+			<a class="btn btn-warning" href="/cuidadores" role="button">Volver</a>
+		</form>
 		<br>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

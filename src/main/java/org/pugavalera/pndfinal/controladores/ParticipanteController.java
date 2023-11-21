@@ -53,4 +53,17 @@ public class ParticipanteController {
 		System.out.println("Mira esto:" + procesar.toString());
 		return new ModelAndView("redirect:/participantes");
 	}
+	
+	@GetMapping("{id}/eliminar")
+	public ModelAndView solicitarEliminar(@PathVariable("id") int id, ModelMap m) {
+		Participante ver = srvc_participantes.ver(id);
+		m.addAttribute("participante", ver);
+		return new ModelAndView("crud/eliminar/Participante", m);
+	}
+	
+	@PostMapping("/eliminar")
+	public ModelAndView eliminar(Participante eliminar, ModelMap m) {
+		srvc_participantes.eliminar(eliminar.getParticipanteId());
+		return new ModelAndView("redirect:/participantes", m);
+	}
 }

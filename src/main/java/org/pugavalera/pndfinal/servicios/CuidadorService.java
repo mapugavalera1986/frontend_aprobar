@@ -64,7 +64,7 @@ public class CuidadorService {
 	}
 	
 	public void eliminar(int id) {
-		logger.info("Cuidador y participantes eliminados con éxito");
 		restTemplate.delete(baseUri+"apoderados/"+id);
+		logger.info("Cuidador y participantes eliminados con éxito");
 	}
 }

@@ -62,4 +62,9 @@ public class EspecialistaService {
 		}
 		return temporal;
 	}
+	
+	public void eliminar(int id) {
+		restTemplate.delete(baseUri+"especialistas/"+id);
+		logger.info("Participante eliminado con éxito");
+	}
 }
